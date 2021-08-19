@@ -22,11 +22,25 @@ const postSchema = new mongoose.Schema({
     //select: false,
   },
   tags: { type: Array },
-  ingredients: {
+  rating: String,
+
+  castAndCrew: {
     type: Array,
     //required: true,
   },
-  steps: {
+  producers: {
+    type: Array,
+    //required: true,
+  },
+  directors: {
+    type: Array,
+    //required: true,
+  },
+  writers: {
+    type: Array,
+    //required: true,
+  },
+  music: {
     type: Array,
     //required: true,
   },
@@ -35,16 +49,14 @@ const postSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
-  difficulty: {
+  releaseYear: {
     type: String,
-    default: "easy",
-    num: ["easy", "medium", "hard"],
+    default: "2000",
   },
-  dishes: {
+  duration: {
     type: String,
-    default: "1",
+    default: "1hr 30min",
   },
-  cockingTime: { type: String, default: "30min" },
   votes: Array,
   favs: Array,
   comments: [{ body: String, date: Date }],
