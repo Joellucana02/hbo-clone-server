@@ -19,7 +19,7 @@ mongoose
     console.log("successfully connected to mongoDB");
   });
 //running server-->>
-const port = process.env.PORT || 3010;
+const port = process.env.PORT || 3009;
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
 });

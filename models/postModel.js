@@ -49,6 +49,10 @@ const postSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+  isMovie: {
+    type: Boolean,
+    default: true,
+  },
   releaseYear: {
     type: String,
     default: "2000",

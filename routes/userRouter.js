@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 //importing controllers-->
-const usersController = require("../controllers/usersController");
+const usersController = require("../controllers/userController");
 
 //destructuring controllers-->
 const { getAllUsers, getUserbyId } = usersController;

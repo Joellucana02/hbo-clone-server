@@ -1,5 +1,5 @@
 //importing modules-->
-const User = require("./../models/usersModel");
+const User = require("./../models/userModel");
 const mongoose = require("mongoose");
 const express = require("express");
 const jwt = require("jsonwebtoken"); //info: https://github.com/auth0/node-jsonwebtoken

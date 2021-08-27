@@ -1,14 +1,22 @@
 //importing modules-->
 const express = require("express");
-const Post = require("../models/postsModel");
+const Post = require("../models/postModel");
+const APIFeatures = require("./../utils/ApiFeatures");
 //post handlers
 exports.getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find({});
+    const features = new APIFeatures(Post.find({}), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    const posts = await features.query;
+    //const posts = await Post.find({});
     res.status(200).json({
       msg: "success",
       length: posts.length,
-      data: { posts },
+      data: posts,
     });
   } catch (error) {
     res.status(400).json({ msg: "Cannot get all posts", error });

@@ -1,6 +1,6 @@
 //importing modules-->
 const express = require("express");
-const User = require("../models/usersModel");
+const User = require("../models/userModel");
 //user handlers
 exports.getAllUsers = async (req, res) => {
   try {
