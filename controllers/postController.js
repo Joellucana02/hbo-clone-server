@@ -39,6 +39,17 @@ exports.createPost = async (req, res) => {
       title: req.body.title,
       desc: req.body.desc,
       userId: req.body.userId ? req.body.userId : undefined,
+      isMovie: req.body.isMovie,
+      releaseYear: req.body.releaseYear,
+      duration: req.body.duration,
+      tags: req.body.tags,
+      rating: req.body.rating,
+      pic: req.body.pic,
+      castAndCrew: req.body.castAndCrew,
+      directors: req.body.directors,
+      producers: req.body.producers,
+      writers: req.body.writers,
+      music: req.body.music,
     });
     res.status(200).json({ msg: "success", data: { post } });
   } catch (error) {

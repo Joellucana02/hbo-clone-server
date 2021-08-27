@@ -21,29 +21,12 @@ const postSchema = new mongoose.Schema({
     minlength: 8,
     //select: false,
   },
-  tags: { type: Array },
-  rating: String,
-
-  castAndCrew: {
-    type: Array,
-    //required: true,
-  },
-  producers: {
-    type: Array,
-    //required: true,
-  },
-  directors: {
-    type: Array,
-    //required: true,
-  },
-  writers: {
-    type: Array,
-    //required: true,
-  },
-  music: {
-    type: Array,
-    //required: true,
-  },
+  tags: [String],
+  castAndCrew: [String],
+  producers: [String],
+  directors: [String],
+  writers: [String],
+  music: [String],
   hidden: {
     type: Boolean,
     default: true,
@@ -60,6 +43,10 @@ const postSchema = new mongoose.Schema({
   duration: {
     type: String,
     default: "1hr 30min",
+  },
+  rating: {
+    type: String,
+    default: "+13",
   },
   votes: Array,
   favs: Array,
