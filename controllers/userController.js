@@ -27,7 +27,10 @@ exports.getUserbyId = async (req, res) => {
 };
 exports.addMovie = async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body);
+    const user = await User.findByIdAndUpdate(req.params.id, {
+      $push: { comments: req.body.comments },
+    });
+    console.log(user.comments);
     /* {
       new: true,
       runValidators: true,
@@ -37,6 +40,6 @@ exports.addMovie = async (req, res) => {
       data: user,
     });
   } catch (error) {
-    res.status(400).json({ msg: "Cannot get user", error });
+    res.status(400).json({ msg: "Cannot add movie", error });
   }
 };
