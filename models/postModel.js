@@ -12,9 +12,10 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 8,
-    maxlength: 150,
+    maxlength: 1000,
   },
   pic: String,
+  picP: String,
   title: {
     type: String,
     required: true,

@@ -40,19 +40,26 @@ exports.loginUser = async (req, res) => {
       res.status(400).json({ msg: "no password or email" });
     //find user by email and get password from document || info:https://mongoosejs.com/docs/api.html#schematype_SchemaType-select
     const user = await User.findOne({ email: email }).select("+password");
-    //console.log(user);
-    //console.log(password);
     if (!user || !(await user.comparePassword(password, user.password))) {
       res.status(400).json({ msg: "no user found" });
     }
     const token = signToken(user._id);
+    const optionsT = {
+      expires: new Date(
+        Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+      ),
+      httpOnly: true,
+    };
+    /* secure:true */
+    res.cookie("jwt", token, optionsT);
+    user.password = undefined;
     res.status(200).json({
       msg: "success",
       jwt: token,
       data: user,
     });
   } catch (error) {
-    res.status(400).json({ msg: "Cannot create an user", error });
+    res.status(400).json({ msg: "Cannot login an user", error });
   }
 };
 exports.protectRoute = async (req, res, next) => {
