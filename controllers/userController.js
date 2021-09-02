@@ -30,7 +30,6 @@ exports.addMovie = async (req, res) => {
     const user = await User.findByIdAndUpdate(req.params.id, {
       $push: { comments: req.body.comments },
     });
-    console.log(user.comments);
     /* {
       new: true,
       runValidators: true,

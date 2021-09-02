@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
+    maxlength: 30,
   }, // String is shorthand for {type: String}
   email: {
     type: String,
@@ -16,6 +17,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
     validate: [validator.isEmail],
+    maxlength: 50,
   },
   profilePic: String,
   password: {

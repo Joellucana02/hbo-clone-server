@@ -33,7 +33,7 @@ exports.signupUser = async (req, res) => {
     res.status(201).json({
       msg: "success",
       jwt: token,
-      data: { newUser },
+      data: newUser,
     });
   } catch (error) {
     res.status(400).json({ msg: "Cannot create an user", error });
