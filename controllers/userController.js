@@ -8,7 +8,7 @@ exports.getAllUsers = async (req, res) => {
     res.status(200).json({
       msg: "success",
       length: users.length,
-      data: { users },
+      data: users,
     });
   } catch (error) {
     res.status(400).json({ msg: "Cannot get all users", error });
@@ -19,7 +19,22 @@ exports.getUserbyId = async (req, res) => {
     const user = await User.findById(req.params.id);
     res.status(200).json({
       msg: "success",
-      data: { user },
+      data: user,
+    });
+  } catch (error) {
+    res.status(400).json({ msg: "Cannot get user", error });
+  }
+};
+exports.addMovie = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body);
+    /* {
+      new: true,
+      runValidators: true,
+    } */
+    res.status(200).json({
+      msg: "success",
+      data: user,
     });
   } catch (error) {
     res.status(400).json({ msg: "Cannot get user", error });

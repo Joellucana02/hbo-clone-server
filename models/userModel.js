@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
     votes: Number,
     favs: Number,
   },
-  comments: [{ body: String, date: Date }],
+  comments: [String],
   date: { type: Date, default: Date.now },
   passwordChangedAt: Date,
 });

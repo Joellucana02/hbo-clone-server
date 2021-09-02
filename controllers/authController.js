@@ -22,6 +22,14 @@ exports.signupUser = async (req, res) => {
       passwordConfirm: req.body.passwordConfirm,
     });
     const token = signToken(newUser._id);
+    const optionsT = {
+      expires: new Date(
+        Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+      ),
+      httpOnly: true,
+    };
+    /* secure:true */
+    res.cookie("jwt", token, optionsT);
     res.status(201).json({
       msg: "success",
       jwt: token,
